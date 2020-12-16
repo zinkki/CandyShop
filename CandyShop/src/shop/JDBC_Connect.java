@@ -14,13 +14,10 @@ public class JDBC_Connect {
 		
 		try {
 			Class.forName(driver);
-			System.out.println("jdbc driver·Îµù¼º°ø");
 			DriverManager.getConnection(url, user, pw);
-			System.out.println("¿À¶óÅ¬¿¬°á ¼º°ø!");
-		} catch (SQLException e) {
-			System.out.println("jdbc·Îµù½ÇÆÐ");
-		} catch(Exception e) {
-			System.out.println("¿À¶óÅ¬¿¬°á½ÇÆÐ");
+			System.out.println("DBì—°ê²°ì„±ê³µ!");
+		}catch(Exception e) {
+			System.out.println("jdbcì—°ê²°ì‹¤íŒ¨");
 		}
 		
 	}

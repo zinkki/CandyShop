@@ -16,6 +16,8 @@ margin: 30px;
 <body>
 <!-- Top -->
 <jsp:include page="Top.jsp"/>
+<!-- TopNav -->
+<jsp:include page="TopNav.jsp"/>
 
 <form action="LoginAction.jsp" method="post">
 <div class="loginForm">

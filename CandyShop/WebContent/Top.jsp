@@ -6,7 +6,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-.login {
+.guest {
+position:absolute;
+top : 50px;
+right : 30px;
+}
+.admin {
+position:absolute;
+top : 50px;
+right : 30px;
+}
+.member {
 position:absolute;
 top : 50px;
 right : 30px;
@@ -15,27 +25,6 @@ right : 30px;
 margin-top: 60px;
 text-align : center;
 }
-ul {
-padding:15px;
-margin:30px;
-background-color: #CEE3F6;
-text-align: center;
-}
-li {
-display: inline-flex;
-text-align: center;
-width: 140px;
-}
-#header .menu {
-margin: 0 auto;
-color : black;
-display: inline-block;
-width: 150px;
-text-decoration: none;
-font-weight: bold;
-background-color: #CEE3F6;
-font-size: 18px;
-}
 </style>
 </head>
 <body>
@@ -43,30 +32,35 @@ font-size: 18px;
 String m_id = (String)session.getAttribute("m_id");
 if(m_id==null){
 	m_id="GUEST";
+%>
+<div class="guest">
+	<h3>Welcome <%=m_id %> !!</h3>
+	<button id="login" type="button" onclick="location.href='LoginForm.jsp'">LOGIN</button>
+	<button id="join" type="button" onclick="location.href='JoinForm.jsp'">JOIN</button>
+</div>
+<%
 }else if(m_id.equals("admin")){
 	m_id="admin";
+%>
+<div class="admin">
+	<h3>Welcome <%=m_id %> !!</h3>
+	<button id="adminpage" type="button" onclick="location.href='AdminPage.jsp'">AdminPage</button>
+	<button id="logout" type="button" onclick="location.href='LogoutAction.jsp'">LOGOUT</button>
+</div>
+<%
 }else {
 	m_id =(String)session.getAttribute("m_id");
+%>
+<div class="member">
+	<h3>Welcome <%=m_id %> !!</h3>
+	<button id="mypage" type="button" onclick="location.href='MyPage.jsp'">MyPage</button>
+	<button id="logout" type="button" onclick="location.href='LogoutAction.jsp'">LOGOUT</button>
+</div>
+<% 
 }
 %>
 <div class="logo">
 	<img alt="" src="img/logo2.png" height="80" width="400">
-</div>
-<div class="login">
-	<h3>Welcome <%=m_id %> !!</h3>
-	<button id="login" type="button" onclick="location.href='LoginForm.jsp'">LOGIN</button>
-	<button id="join" type="button" onclick="location.href='JoinForm.jsp'">JOIN</button>
-	<button id="logout" type="button" onclick="location.href='LogoutAction.jsp'">LOGOUT</button>
-</div>
-<div>
-<ul id="header">
-		<li><a class="menu" href="#">Candy</a></li>
-		<li><a class="menu" href="#">Chocolate</a></li>
-		<li><a class="menu" href="#">Jelly</a></li>
-		<li><a class="menu" href="#">Caramel</a></li>
-		<li><a class="menu" href="#">Marshmallow</a></li>
-		<li><a class="menu" href="#">Gum</a></li>
-</ul>
 </div>
 </body>
 </html>

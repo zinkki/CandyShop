@@ -1,5 +1,3 @@
-<%@ page import="shop.Bean" %>
-<%@ page import="shop.MemberDAO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,15 +7,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-<table>
-
 <!-- Top -->
 <jsp:include page="Top.jsp"/>
 <!-- TopNav -->
 <jsp:include page="TopNav.jsp"/>
+<table align="center">
+<tr>
+<td align="center"><h3><a href="#">Product Management</a></h3></td>
+</tr>
+<tr>
+<td align="center"><h3><a href="MemberList.jsp">Member Management</a></h3></td>
+</tr>
+<tr>
+<td align="center"><h3><a href="WithdrawalMemberList.jsp">WithdrawalMember Management</a></h3></td>
+</tr>
+</table>
 <!-- Bottom -->
 <jsp:include page="Bottom.jsp"/>
-
-</table>
 </body>
 </html>

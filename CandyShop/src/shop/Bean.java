@@ -21,6 +21,7 @@ public class Bean {
 	String m_birth;
 	int m_drop;
 	String m_buy;
+	String m_jibunAddress;
 
 	//product table
 	int p_id; //PK
@@ -67,7 +68,12 @@ public class Bean {
 //  int o_id; FK
 	int od_amount;
 	
-	
+	public String getM_jibunAddress() {
+		return m_jibunAddress;
+	}
+	public void setM_jibunAddress(String m_jibunAddress) {
+		this.m_jibunAddress = m_jibunAddress;
+	}
 	public int getM_drop() {
 		return m_drop;
 	}
