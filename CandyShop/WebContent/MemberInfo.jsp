@@ -53,6 +53,15 @@ Bean bean = adao.memberInfo(mbean.getM_id());
 <td width="120" align="center">Buy</td>
 <td width="380" align="center"><%=bean.getM_buy() %></td>
 </tr>
+<tr height="40">
+<td align="center" colspan="2">
+<input type="button" value="DELETE"
+onclick="if(confirm('Are you sure you want to delete it?')){
+location.href='MemberDeleteAction.jsp?m_id=<%=bean.getM_id() %>'
+alert('Ok'); }else {alert('Cancele');}">
+<input type="button" value="MemberLIST" onclick="location.href='MemberList.jsp'">
+</td>
+</tr>
 <!-- Bottom -->
 <jsp:include page="Bottom.jsp"/>
 </table>

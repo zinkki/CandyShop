@@ -13,7 +13,7 @@
 <jsp:include page="TopNav.jsp"/>
 <table align="center">
 <tr>
-<td align="center"><h3><a href="#">Product Management</a></h3></td>
+<td align="center"><h3><a href="ProductRegistration.jsp">Product Management</a></h3></td>
 </tr>
 <tr>
 <td align="center"><h3><a href="MemberList.jsp">Member Management</a></h3></td>

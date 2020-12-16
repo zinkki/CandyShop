@@ -34,6 +34,7 @@ public class Bean {
 	String p_img4;
 	String p_detail;
 	String p_date;
+	int p_category;
 
 	//cart table
 	int c_id; //PK
@@ -68,6 +69,12 @@ public class Bean {
 //  int o_id; FK
 	int od_amount;
 	
+	public int getP_category() {
+		return p_category;
+	}
+	public void setP_category(int p_category) {
+		this.p_category = p_category;
+	}
 	public String getM_jibunAddress() {
 		return m_jibunAddress;
 	}
