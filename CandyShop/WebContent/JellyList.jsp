@@ -20,6 +20,10 @@ height:300px;
 width: 250px;
 height: 250px;
 }
+.insert_bt {
+position: absolute;
+right: 80px;
+}
 </style>
 </head>
 <body>
@@ -32,6 +36,12 @@ AdminDAO adao = new AdminDAO();
 ArrayList<Bean> list = adao.jellyList();
 %>
 <h2 align="center">Jelly List</h2>
+
+<div class="insert_bt">
+<button type="button" value="AddCandy"
+ onclick="location.href='InsertJelly.jsp'">AddJelly</button>
+</div>
+<br>
 <div class="parent">
 <%
 for(int i=0;i<list.size();i++) {
@@ -44,7 +54,7 @@ for(int i=0;i<list.size();i++) {
 </a>
 </div>
 <div align="center"><%=bean.getP_name()%></div>
-<div align="center"><%=bean.getP_price() %>&nbsp;\</div>
+<div align="center">\<%=bean.getP_price() %></div>
 </div>
 <%
 }

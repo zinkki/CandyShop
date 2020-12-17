@@ -30,10 +30,10 @@ if(bean.getP_id()<=0 || bean.getP_name()==null || bean.getP_price()<=0 ||
 }else {
 	PrintWriter p = response.getWriter();
 	p.println("<script>");
-	p.println("alert('Added Candy!')");
+	p.println("alert('Added Jelly!')");
 	p.println("</script>");
-	adao.insertCandy(bean);
-	response.sendRedirect("CandyList.jsp");
+	adao.insertJelly(bean);
+	response.sendRedirect("JellyList.jsp");
 }
 %>
 <!-- Bottom -->

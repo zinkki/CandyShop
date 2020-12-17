@@ -359,7 +359,107 @@ public void insertCandy(Bean bean) {
 public void insertChoco(Bean bean) {
 	getCon();
 	try {
-		
+		String sql = "INSERT INTO shop_product VALUES(?,?,?,?,?,?,?,?,?,SYSDATE,2)";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, bean.getP_id());
+		pstmt.setString(2, bean.getP_name());
+		pstmt.setInt(3, bean.getP_price());
+		pstmt.setInt(4, bean.getP_stock());
+		pstmt.setString(5, bean.getP_img());
+		pstmt.setString(6, bean.getP_img2());
+		pstmt.setString(7, bean.getP_img3());
+		pstmt.setString(8, bean.getP_img4());
+		pstmt.setString(9, bean.getP_detail());
+		pstmt.executeUpdate();
+		con.close();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+}
+
+//Insert Jelly(p_category=3)
+public void insertJelly(Bean bean) {
+	getCon();
+	try {
+		String sql = "INSERT INTO shop_product VALUES(?,?,?,?,?,?,?,?,?,SYSDATE,3)";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, bean.getP_id());
+		pstmt.setString(2, bean.getP_name());
+		pstmt.setInt(3, bean.getP_price());
+		pstmt.setInt(4, bean.getP_stock());
+		pstmt.setString(5, bean.getP_img());
+		pstmt.setString(6, bean.getP_img2());
+		pstmt.setString(7, bean.getP_img3());
+		pstmt.setString(8, bean.getP_img4());
+		pstmt.setString(9, bean.getP_detail());
+		pstmt.executeUpdate();
+		con.close();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+}
+
+//Insert JellyBean(p_category=4)
+public void insertJellyBean(Bean bean) {
+	getCon();
+	try {
+		String sql = "INSERT INTO shop_product VALUES(?,?,?,?,?,?,?,?,?,SYSDATE,4)";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, bean.getP_id());
+		pstmt.setString(2, bean.getP_name());
+		pstmt.setInt(3, bean.getP_price());
+		pstmt.setInt(4, bean.getP_stock());
+		pstmt.setString(5, bean.getP_img());
+		pstmt.setString(6, bean.getP_img2());
+		pstmt.setString(7, bean.getP_img3());
+		pstmt.setString(8, bean.getP_img4());
+		pstmt.setString(9, bean.getP_detail());
+		pstmt.executeUpdate();
+		con.close();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+}
+
+//Insert Marshmallow(p_category=5)
+public void insertMarsh(Bean bean) {
+	getCon();
+	try {
+		String sql = "INSERT INTO shop_product VALUES(?,?,?,?,?,?,?,?,?,SYSDATE,5)";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, bean.getP_id());
+		pstmt.setString(2, bean.getP_name());
+		pstmt.setInt(3, bean.getP_price());
+		pstmt.setInt(4, bean.getP_stock());
+		pstmt.setString(5, bean.getP_img());
+		pstmt.setString(6, bean.getP_img2());
+		pstmt.setString(7, bean.getP_img3());
+		pstmt.setString(8, bean.getP_img4());
+		pstmt.setString(9, bean.getP_detail());
+		pstmt.executeUpdate();
+		con.close();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+}
+
+//Insert Gum(p_category=6)
+public void insertGum(Bean bean) {
+	getCon();
+	try {
+		String sql = "INSERT INTO shop_product VALUES(?,?,?,?,?,?,?,?,?,SYSDATE,6)";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, bean.getP_id());
+		pstmt.setString(2, bean.getP_name());
+		pstmt.setInt(3, bean.getP_price());
+		pstmt.setInt(4, bean.getP_stock());
+		pstmt.setString(5, bean.getP_img());
+		pstmt.setString(6, bean.getP_img2());
+		pstmt.setString(7, bean.getP_img3());
+		pstmt.setString(8, bean.getP_img4());
+		pstmt.setString(9, bean.getP_detail());
+		pstmt.executeUpdate();
+		con.close();
 	} catch (Exception e) {
 		e.printStackTrace();
 	}

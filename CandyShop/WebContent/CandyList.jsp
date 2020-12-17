@@ -22,7 +22,7 @@ height: 250px;
 }
 .insert_bt {
 position: absolute;
-right: 50px;
+right: 80px;
 }
 </style>
 </head>
@@ -54,12 +54,11 @@ for(int i=0;i<list.size();i++) {
 </a>
 </div>
 <div align="center"><%=bean.getP_name() %></div>
-<div align="center">&nbsp;\<%=bean.getP_price() %></div>
+<div align="center">\<%=bean.getP_price() %></div>
 </div>
 <%
 } 
 %>
-
 </div>
 <!-- Bottom -->
 <jsp:include page="Bottom.jsp"/>

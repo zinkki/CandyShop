@@ -1,5 +1,5 @@
-<%@ page import="shop.AdminDAO" %>
 <%@ page import="java.io.PrintWriter" %>
+<%@ page import="shop.AdminDAO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -30,10 +30,10 @@ if(bean.getP_id()<=0 || bean.getP_name()==null || bean.getP_price()<=0 ||
 }else {
 	PrintWriter p = response.getWriter();
 	p.println("<script>");
-	p.println("alert('Added Candy!')");
+	p.println("alert('Added Chocolate!')");
 	p.println("</script>");
-	adao.insertCandy(bean);
-	response.sendRedirect("CandyList.jsp");
+	adao.insertChoco(bean);
+	response.sendRedirect("ChocoList.jsp");
 }
 %>
 <!-- Bottom -->
