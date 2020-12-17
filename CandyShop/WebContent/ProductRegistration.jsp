@@ -22,7 +22,7 @@
 <tr height="40">
 <td width="300" align="center">Go Chocolate Registration! >></td>
 <td align="center">
-<button type="button" onclick="location.href='ChocolateList.jsp'">Chocolate</button>
+<button type="button" onclick="location.href='ChocoList.jsp'">Chocolate</button>
 </td>
 </tr>
 <tr height="40">
