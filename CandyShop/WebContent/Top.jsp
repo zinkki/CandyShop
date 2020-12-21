@@ -22,7 +22,7 @@ top : 50px;
 right : 30px;
 }
 .logo {
-margin-top: 60px;
+margin-top: 20px;
 text-align : center;
 }
 </style>
@@ -60,7 +60,7 @@ if(m_id==null){
 }
 %>
 <div class="logo">
-	<img alt="" src="img/logo2.png" height="80" width="400">
+	<img alt="" src="img/main2.jpg" height="150" width="400">
 </div>
 </body>
 </html>

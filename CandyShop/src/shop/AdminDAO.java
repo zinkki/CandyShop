@@ -176,7 +176,7 @@ public ArrayList<Bean> candyList() {
 	ArrayList<Bean> list = new ArrayList<>();
 	getCon();
 	try {
-		String sql = "SELECT * FROM shop_product WHERE p_category=1";
+		String sql = "SELECT * FROM shop_product WHERE p_category=1 order by p_id asc";
 		pstmt = con.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		while(rs.next()) {
@@ -203,7 +203,7 @@ public ArrayList<Bean> chocoList() {
 	ArrayList<Bean> list = new ArrayList<>();
 	getCon();
 	try {
-		String sql ="SELECT * FROM shop_product WHERE p_category=2";
+		String sql ="SELECT * FROM shop_product WHERE p_category=2 order by p_id asc";
 		pstmt = con.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		while(rs.next()) {
@@ -230,7 +230,7 @@ public ArrayList<Bean> jellyList() {
 	ArrayList<Bean> list = new ArrayList<>();
 	getCon();
 	try {
-		String sql = "SELECT * FROM shop_product WHERE p_category=3";
+		String sql = "SELECT * FROM shop_product WHERE p_category=3 order by p_id asc";
 		pstmt = con.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		while(rs.next()) {
@@ -257,7 +257,7 @@ public ArrayList<Bean> jellyBeanList() {
 	ArrayList<Bean> list = new ArrayList<>();
 	getCon();
 	try {
-		String sql = "SELECT * FROM shop_product WHERE p_category=4";
+		String sql = "SELECT * FROM shop_product WHERE p_category=4 order by p_id asc";
 		pstmt = con.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		while(rs.next()) {
@@ -284,7 +284,7 @@ public ArrayList<Bean> marshList() {
 	ArrayList<Bean> list = new ArrayList<>();
 	getCon();
 	try {
-		String sql = "SELECT * FROM shop_product WHERE p_category=5";
+		String sql = "SELECT * FROM shop_product WHERE p_category=5 order by p_id asc";
 		pstmt = con.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		while(rs.next()) {
@@ -311,7 +311,7 @@ public ArrayList<Bean> gumList() {
 	ArrayList<Bean> list = new ArrayList<>();
 	getCon();
 	try {
-		String sql = "SELECT * FROM shop_product WHERE p_category=6";
+		String sql = "SELECT * FROM shop_product WHERE p_category=6 order by p_id asc";
 		pstmt = con.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		while(rs.next()) {
@@ -464,4 +464,31 @@ public void insertGum(Bean bean) {
 		e.printStackTrace();
 	}
 }
+
+//선택한 product정보보기
+public Bean candyInfo(int p_id) {
+	Bean bean = new Bean();
+	getCon();
+	try {
+		String sql = "SELECT * FROM shop_product WHERE p_id=?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, p_id);
+		rs = pstmt.executeQuery();
+		while(rs.next()) {
+		bean.setP_id(rs.getInt(1));
+		bean.setP_name(rs.getString(2));
+		bean.setP_price(rs.getInt(3));
+		bean.setP_stock(rs.getInt(4));
+		bean.setP_img(rs.getString(5));
+		bean.setP_img2(rs.getString(6));
+		bean.setP_img3(rs.getString(7));
+		bean.setP_img4(rs.getString(8));
+		bean.setP_detail(rs.getString(9));
+		}con.close();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return bean;
+}
+
 }
