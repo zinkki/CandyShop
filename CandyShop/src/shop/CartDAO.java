@@ -6,23 +6,28 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class CartDAO {
-	String id = "system";
-	String pw = "1234";
-	String url = "jdbc:oracle:thin:@localhost:1521:XE";
 	
-	Connection con;
-	PreparedStatement pstmt;
-	ResultSet rs;
+String id = "system";
+String pw = "1234";
+String url = "jdbc:oracle:thin:@localhost:1521:XE";
 	
-	//jdbc연동
-	public void getCon() {
+Connection con;
+PreparedStatement pstmt;
+ResultSet rs;
+	
+//jdbc연동
+public void getCon() {
 		
-		try {
-			Class.forName(id);
-			con = DriverManager.getConnection(url, id, pw);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-	
+	try {
+		Class.forName(id);
+		con = DriverManager.getConnection(url, id, pw);
+	} catch(Exception e) {
+		e.printStackTrace();
 	}
+}
+
+//cart에 product(상품)담기
+public void insertCart(Bean bean) {
+	
+}
 }

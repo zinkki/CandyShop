@@ -37,10 +37,11 @@ public class Bean {
 	int p_category;
 
 	//cart table
-	int c_id; //PK
-//	String m_id; FK
-//  String p_id; FK
-	int c_num;
+//	String m_id; //PK&FK =memberID
+//  String p_id; //FK    =productID
+	int cp_count; //     =p_id가같은 product의갯수
+	int cp_price; //     =p_id.p_price*cp_count
+	int c_allprice; //   = c_allprice+=cp_price
 
 	//order table
 	int o_id; //PK
@@ -69,6 +70,24 @@ public class Bean {
 //  int o_id; FK
 	int od_amount;
 	
+	public int getCp_count() {
+		return cp_count;
+	}
+	public void setCp_count(int cp_count) {
+		this.cp_count = cp_count;
+	}
+	public int getCp_price() {
+		return cp_price;
+	}
+	public void setCp_price(int cp_price) {
+		this.cp_price = cp_price;
+	}
+	public int getC_allprice() {
+		return c_allprice;
+	}
+	public void setC_allprice(int c_allprice) {
+		this.c_allprice = c_allprice;
+	}
 	public int getP_category() {
 		return p_category;
 	}
@@ -236,18 +255,6 @@ public class Bean {
 	}
 	public void setP_date(String p_date) {
 		this.p_date = p_date;
-	}
-	public int getC_id() {
-		return c_id;
-	}
-	public void setC_id(int c_id) {
-		this.c_id = c_id;
-	}
-	public int getC_num() {
-		return c_num;
-	}
-	public void setC_num(int c_num) {
-		this.c_num = c_num;
 	}
 	public int getO_id() {
 		return o_id;

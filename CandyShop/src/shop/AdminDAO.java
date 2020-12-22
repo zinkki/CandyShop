@@ -484,11 +484,26 @@ public Bean candyInfo(int p_id) {
 		bean.setP_img3(rs.getString(7));
 		bean.setP_img4(rs.getString(8));
 		bean.setP_detail(rs.getString(9));
+		bean.setP_category(rs.getInt(11));
 		}con.close();
 	} catch (Exception e) {
 		e.printStackTrace();
 	}
 	return bean;
+}
+
+//ProductInfo에서 선택한 Product삭제하기
+public void deleteProduct(int p_id) {
+	getCon();
+	try {
+		String sql = "DELETE FROM shop_product WHERE p_id=?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, p_id);
+		pstmt.executeUpdate();
+		con.close();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
 }
 
 }
