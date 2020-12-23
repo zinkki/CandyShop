@@ -11,6 +11,11 @@
 <style>
 .parent {
 display:flex;
+flex-wrap: wrap;
+}
+.parent .box {
+height:500px;
+width:500px;
 }
 .child {
 width:250px;
@@ -31,16 +36,14 @@ right: 80px;
 <jsp:include page="Top.jsp"/>
 <!-- TopNav -->
 <jsp:include page="TopNav.jsp"/>
+
+<h2 align="center">Candy List</h2>
 <%
 AdminDAO adao = new AdminDAO();
 ArrayList<Bean> list = adao.candyList();
 %>
-<h2 align="center">Candy List</h2>
-
-<div class="insert_bt">
-<button type="button" value="AddCandy"
+<button class="insert_bt" type="button" value="AddCandy"
  onclick="location.href='InsertCandy.jsp'">AddCandy</button>
-</div>
 <br>
 <div class="parent">
 <%
@@ -57,7 +60,7 @@ for(int i=0;i<list.size();i++) {
 <div align="center">\<%=bean.getP_price() %></div>
 </div>
 <%
-} 
+}
 %>
 </div>
 <!-- Bottom -->

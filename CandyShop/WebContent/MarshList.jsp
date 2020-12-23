@@ -11,6 +11,11 @@
 <style>
 .parent {
 display:flex;
+flex-wrap: wrap;
+}
+.parent .box {
+height:500px;
+width:500px;
 }
 .child {
 width:250px;
@@ -38,8 +43,8 @@ ArrayList<Bean> list = adao.marshList();
 <h2 align="center">MarshMallow List</h2>
 
 <div class="insert_bt">
-<button type="button" value="AddCandy"
- onclick="location.href='InsertMarsh.jsp'">AddCandy</button>
+<button type="button" value="AddMarsh"
+ onclick="location.href='InsertMarsh.jsp'">AddMarsh</button>
 </div>
 <br>
 <div class="parent">

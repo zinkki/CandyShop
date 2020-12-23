@@ -25,10 +25,6 @@ height:300px;
 width: 250px;
 height: 250px;
 }
-.insert_bt {
-position: absolute;
-right: 80px;
-}
 </style>
 </head>
 <body>
@@ -36,15 +32,12 @@ right: 80px;
 <jsp:include page="Top.jsp"/>
 <!-- TopNav -->
 <jsp:include page="TopNav.jsp"/>
+
+<h2 align="center">Candy List</h2>
 <%
 AdminDAO adao = new AdminDAO();
-ArrayList<Bean> list = adao.jellyBeanList();
+ArrayList<Bean> list = adao.candyList();
 %>
-<h2 align="center">JellyBean List</h2>
-<div class="insert_bt">
-<button type="button" value="AddBean"
- onclick="location.href='InsertJellyBean.jsp'">AddBean</button>
-</div>
 <br>
 <div class="parent">
 <%
@@ -53,12 +46,12 @@ for(int i=0;i<list.size();i++) {
 %>
 <div class="child">
 <div class="img">
-<a href="JellyBeanInfo.jsp?p_id=<%=bean.getP_id() %>">
+<a href="CandyInfo_Member.jsp?p_id=<%=bean.getP_id() %>">
 <img src="img/<%=bean.getP_img() %>">
 </a>
 </div>
 <div align="center"><%=bean.getP_name() %></div>
-<div align="center"><%=bean.getP_price() %>&nbsp;\</div>
+<div align="center">\<%=bean.getP_price() %></div>
 </div>
 <%
 }
@@ -66,5 +59,6 @@ for(int i=0;i<list.size();i++) {
 </div>
 <!-- Bottom -->
 <jsp:include page="Bottom.jsp"/>
+</body>
 </body>
 </html>

@@ -25,10 +25,6 @@ height:300px;
 width: 250px;
 height: 250px;
 }
-.insert_bt {
-position: absolute;
-right: 80px;
-}
 </style>
 </head>
 <body>
@@ -41,10 +37,6 @@ AdminDAO adao = new AdminDAO();
 ArrayList<Bean> list = adao.jellyBeanList();
 %>
 <h2 align="center">JellyBean List</h2>
-<div class="insert_bt">
-<button type="button" value="AddBean"
- onclick="location.href='InsertJellyBean.jsp'">AddBean</button>
-</div>
 <br>
 <div class="parent">
 <%
@@ -53,7 +45,7 @@ for(int i=0;i<list.size();i++) {
 %>
 <div class="child">
 <div class="img">
-<a href="JellyBeanInfo.jsp?p_id=<%=bean.getP_id() %>">
+<a href="JellyBeanInfo_Member.jsp?p_id=<%=bean.getP_id() %>">
 <img src="img/<%=bean.getP_img() %>">
 </a>
 </div>

@@ -41,7 +41,7 @@ public class Bean {
 //  String p_id; //FK    =productID
 	int cp_count; //     =p_id가같은 product의갯수
 	int cp_price; //     =p_id.p_price*cp_count
-	int c_allprice; //   = c_allprice+=cp_price
+//	int cp_allprice; //   = c_allprice+=cp_price//얘 없어도될듯..?일단 놔둠
 
 	//order table
 	int o_id; //PK
@@ -70,42 +70,6 @@ public class Bean {
 //  int o_id; FK
 	int od_amount;
 	
-	public int getCp_count() {
-		return cp_count;
-	}
-	public void setCp_count(int cp_count) {
-		this.cp_count = cp_count;
-	}
-	public int getCp_price() {
-		return cp_price;
-	}
-	public void setCp_price(int cp_price) {
-		this.cp_price = cp_price;
-	}
-	public int getC_allprice() {
-		return c_allprice;
-	}
-	public void setC_allprice(int c_allprice) {
-		this.c_allprice = c_allprice;
-	}
-	public int getP_category() {
-		return p_category;
-	}
-	public void setP_category(int p_category) {
-		this.p_category = p_category;
-	}
-	public String getM_jibunAddress() {
-		return m_jibunAddress;
-	}
-	public void setM_jibunAddress(String m_jibunAddress) {
-		this.m_jibunAddress = m_jibunAddress;
-	}
-	public int getM_drop() {
-		return m_drop;
-	}
-	public void setM_drop(int m_drop) {
-		this.m_drop = m_drop;
-	}
 	public String getA_id() {
 		return a_id;
 	}
@@ -190,11 +154,23 @@ public class Bean {
 	public void setM_birth(String m_birth) {
 		this.m_birth = m_birth;
 	}
+	public int getM_drop() {
+		return m_drop;
+	}
+	public void setM_drop(int m_drop) {
+		this.m_drop = m_drop;
+	}
 	public String getM_buy() {
 		return m_buy;
 	}
 	public void setM_buy(String m_buy) {
 		this.m_buy = m_buy;
+	}
+	public String getM_jibunAddress() {
+		return m_jibunAddress;
+	}
+	public void setM_jibunAddress(String m_jibunAddress) {
+		this.m_jibunAddress = m_jibunAddress;
 	}
 	public int getP_id() {
 		return p_id;
@@ -256,6 +232,30 @@ public class Bean {
 	public void setP_date(String p_date) {
 		this.p_date = p_date;
 	}
+	public int getP_category() {
+		return p_category;
+	}
+	public void setP_category(int p_category) {
+		this.p_category = p_category;
+	}
+	public int getCp_count() {
+		return cp_count;
+	}
+	public void setCp_count(int cp_count) {
+		this.cp_count = cp_count;
+	}
+	public int getCp_price() {
+		return cp_price;
+	}
+	public void setCp_price(int cp_price) {
+		this.cp_price = cp_price;
+	}
+//	public int getCp_allprice() {
+//		return cp_allprice;
+//	}
+//	public void setCp_allprice(int cp_allprice) {
+//		this.cp_allprice = cp_allprice;
+//	}
 	public int getO_id() {
 		return o_id;
 	}
@@ -334,6 +334,5 @@ public class Bean {
 	public void setOd_amount(int od_amount) {
 		this.od_amount = od_amount;
 	}
-	
 	
 }

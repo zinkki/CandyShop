@@ -32,12 +32,12 @@ font-size: 18px;
 <body>
 <div>
 <ul id="header">
-		<li><a class="menu" href="CandyList.jsp">Candy</a></li>
-		<li><a class="menu" href="ChocoList.jsp">Chocolate</a></li>
-		<li><a class="menu" href="JellyList.jsp">Jelly</a></li>
-		<li><a class="menu" href="JellyBeanList.jsp">JellyBean</a></li>
-		<li><a class="menu" href="MarshList.jsp">Marshmallow</a></li>
-		<li><a class="menu" href="GumList.jsp">Gum</a></li>
+		<li><a class="menu" href="CandyList_Member.jsp">Candy</a></li>
+		<li><a class="menu" href="ChocoList_Member.jsp">Chocolate</a></li>
+		<li><a class="menu" href="JellyList_Member.jsp">Jelly</a></li>
+		<li><a class="menu" href="JellyBeanList_Member.jsp">JellyBean</a></li>
+		<li><a class="menu" href="MarshList_Member.jsp">Marshmallow</a></li>
+		<li><a class="menu" href="GumList_Member.jsp">Gum</a></li>
 </ul>
 </div>
 </body>

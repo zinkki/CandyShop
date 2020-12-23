@@ -11,6 +11,11 @@
 <style>
 .parent {
 display:flex;
+flex-wrap: wrap;
+}
+.parent .box {
+height:500px;
+width:500px;
 }
 .child {
 width:250px;
@@ -38,7 +43,7 @@ ArrayList<Bean> list = adao.gumList();
 <h2 align="center">Gum List</h2>
 
 <div class="insert_bt">
-<button type="button" value="AddCandy"
+<button type="button" value="AddGum"
  onclick="location.href='InsertGum.jsp'">AddGum</button>
 </div>
 <br>
