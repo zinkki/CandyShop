@@ -1,7 +1,5 @@
 <%@ page import="shop.CartDAO" %>
-<%@ page import="shop.Bean" %>
 <%@ page import="java.io.PrintWriter" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,14 +9,14 @@
 <title>Insert title here</title>
 <style>
 .product {
-width: 100px;
-height: 100px;
+width:200px;
+height:200px;
 }
 </style>
 </head>
 <body>
-<jsp:useBean id="cbean" class="shop.Bean">
-	<jsp:setProperty name="cbean" property="*"/>
+<jsp:useBean id="bean" class="shop.Bean">
+	<jsp:setProperty name="bean" property="*"/>
 </jsp:useBean>
 <!-- Top -->
 <jsp:include page="Top.jsp"/>
@@ -34,27 +32,23 @@ int cp_price = p_price*cp_count;
 String p_img = request.getParameter("p_img");
 String p_name = request.getParameter("p_name");
 
-if(m_id==null){
+if(m_id!=null) {
+	bean.setM_id(m_id);
+	bean.setCp_count(cp_count);
+	bean.setP_price(p_price);
+	bean.setP_id(p_id);
+	bean.setCp_price(cp_price);
+	bean.setP_img(p_img);
+	bean.setP_name(p_name);
+}else {
 	PrintWriter p = response.getWriter();
 	p.println("<script>");
-	p.println("alert('You need Login!')");
+	p.println("alert('You need login!')");
 	p.println("history.go(-1)");
 	p.println("</script>");
-}else {
-	cbean.setM_id(m_id);
-	cbean.setCp_count(cp_count);
-	cbean.setP_price(p_price);
-	cbean.setP_id(p_id);
-	cbean.setCp_price(cp_price);
-	cbean.setP_img(p_img);
-	cbean.setP_name(p_name);
-	//db삽입
-	cdao.addCart(cbean);
-	//list목록
-	ArrayList<Bean> list = cdao.cartList(request.getParameter("m_id"));
-
+}
 %>
-<h2 align="center">Cart</h2>
+<h2 align="center">BUY NOW</h2>
 <form action="OrderAction.jsp" method="post">
 <table align="center" border="1">
 <tr height="40">
@@ -63,21 +57,12 @@ if(m_id==null){
 <td align="center" width="100">amount</td>
 <td align="center" width="100">Price</td>
 </tr>
-<%
-for(int i=0; i<list.size();i++){
-	Bean bean = list.get(i);
-%>
-
 <tr height="100">
 <td width="200"><img class="product" src="img/<%=bean.getP_img() %>"></td>
 <td align="center"><%=bean.getP_name() %></td>
 <td align="center"><%=bean.getCp_count() %></td>
 <td align="center">\<%=bean.getCp_price() %></td>
 </tr>
-<% 
-	}
-}
-%>
 <tr height="40">
 <td colspan="4" align="center"><input type="submit" value="Order"></td>
 </tr>
