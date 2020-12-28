@@ -47,8 +47,8 @@ public ArrayList<Bean> cartList(String m_id) {
 	ArrayList<Bean> list = new ArrayList<>();
 	getCon();
 	try {
-		String sql = "SELECT p.p_img, p.p_name,"
-				+ " c.cp_count, c.cp_price FROM "
+		String sql = "SELECT p.p_img, p.p_name, "
+				+ " c.cp_count, c.cp_price, p.p_id FROM "
 				+ "shop_cart c, shop_product p, shop_member m"
 				+ " WHERE p.p_id = c.p_id and c.m_id = m.m_id and c.m_id=?";
 		pstmt = con.prepareStatement(sql);
@@ -60,6 +60,7 @@ public ArrayList<Bean> cartList(String m_id) {
 			bean.setP_name(rs.getString(2));
 			bean.setCp_count(rs.getInt(3));
 			bean.setCp_price(rs.getInt(4));
+			bean.setP_id(rs.getInt(5));
 			list.add(bean);
 		}	con.close();
 	} catch (Exception e) {
@@ -81,6 +82,20 @@ public void buyNow(Bean bean) {
 		pstmt.executeUpdate();
 		con.close();
 	} catch (Exception e) {
+		e.printStackTrace();
+	}
+}
+
+//Cart에담긴목록 x버튼 클릭해서 지우기
+public void deleteCart(int p_id) {
+	getCon();
+	try {
+		String sql = "DELETE FROM shop_cart WHERE p_id=?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, p_id);
+		pstmt.executeUpdate();
+		con.close();
+	}catch(Exception e) {
 		e.printStackTrace();
 	}
 }

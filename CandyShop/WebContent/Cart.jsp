@@ -1,6 +1,5 @@
 <%@ page import="shop.CartDAO" %>
 <%@ page import="shop.Bean" %>
-<%@ page import="java.io.PrintWriter" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -15,71 +14,66 @@ width: 100px;
 height: 100px;
 }
 </style>
+<script>
+function btn_click(str){
+	if(str=="order"){
+		cart.action="Order.jsp";
+		}
+	}else {
+		
+	}
+}
+</script>
 </head>
 <body>
-<jsp:useBean id="cbean" class="shop.Bean">
-	<jsp:setProperty name="cbean" property="*"/>
-</jsp:useBean>
 <!-- Top -->
 <jsp:include page="Top.jsp"/>
 <!-- TopNav -->
 <jsp:include page="TopNav.jsp"/>
 <%
 CartDAO cdao = new CartDAO();
+Bean bean = new Bean();
 String m_id = (String)session.getAttribute("m_id");
-int cp_count = Integer.parseInt(request.getParameter("cp_count"));
-int p_price = Integer.parseInt(request.getParameter("p_price"));
-int p_id = Integer.parseInt(request.getParameter("p_id"));
-int cp_price = p_price*cp_count;
-String p_img = request.getParameter("p_img");
-String p_name = request.getParameter("p_name");
-
-if(m_id==null){
-	PrintWriter p = response.getWriter();
-	p.println("<script>");
-	p.println("alert('You need Login!')");
-	p.println("history.go(-1)");
-	p.println("</script>");
-}else {
-	cbean.setM_id(m_id);
-	cbean.setCp_count(cp_count);
-	cbean.setP_price(p_price);
-	cbean.setP_id(p_id);
-	cbean.setCp_price(cp_price);
-	cbean.setP_img(p_img);
-	cbean.setP_name(p_name);
-	//db삽입
-	cdao.addCart(cbean);
-	//list목록
-	ArrayList<Bean> list = cdao.cartList(request.getParameter("m_id"));
-
+//list목록
+ArrayList<Bean> list = cdao.cartList(m_id);
 %>
 <h2 align="center">Cart</h2>
-<form action="OrderAction.jsp" method="post">
+<form name="cart" method="post">
 <table align="center" border="1">
 <tr height="40">
+<td width="50" align="center">num</td>
 <td width="200" align="center">product img</td>
 <td align="center" width="100">Product Name</td>
 <td align="center" width="100">amount</td>
 <td align="center" width="100">Price</td>
+<td align="center" width="50">Delete</td>
 </tr>
 <%
+int allPrice = 0;
 for(int i=0; i<list.size();i++){
-	Bean bean = list.get(i);
+	bean = list.get(i);
 %>
-
 <tr height="100">
-<td width="200"><img class="product" src="img/<%=bean.getP_img() %>"></td>
+<td width="50" align="center"><%=i+1 %></td>
+<td width="200" align="center"><img class="product" src="img/<%=bean.getP_img() %>"></td>
 <td align="center"><%=bean.getP_name() %></td>
 <td align="center"><%=bean.getCp_count() %></td>
 <td align="center">\<%=bean.getCp_price() %></td>
+<td align="center">
+<input type="submit" value="X" onclick="if(confirm('Delete it?')){
+	location.href='CartDeleteAction.jsp?p_id=<%=bean.getP_id()%>'
+	alert('OK');}else {alert('Cancele');}"></td>
 </tr>
 <% 
-	}
+allPrice += bean.getCp_price();
 }
 %>
+
+
 <tr height="40">
-<td colspan="4" align="center"><input type="submit" value="Order"></td>
+<td colspan="4" align="center">
+<input type="submit" value="ORDER" onclick='btn_click("order");'></td>
+<td colspan="2" align="center"><h3><b>\<%=allPrice %></b></h3></td>
 </tr>
 </table>
 </form>

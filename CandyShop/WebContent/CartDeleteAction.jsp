@@ -1,4 +1,4 @@
-<%@ page import="shop.AdminDAO" %>
+<%@ page import="shop.CartDAO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,10 +9,10 @@
 </head>
 <body>
 <%
-AdminDAO adao = new AdminDAO();
-String m_id = request.getParameter("m_id");
-adao.dropMember(m_id);
-response.sendRedirect("WithdrawalMemberList.jsp");
+CartDAO cdao = new CartDAO();
+int p_id = Integer.parseInt(request.getParameter("p_id"));
+cdao.deleteCart(p_id);
+response.sendRedirect("Cart.jsp");
 %>
 </body>
 </html>

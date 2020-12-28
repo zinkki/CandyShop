@@ -42,7 +42,9 @@ if(m_id==null) {
 	cbean.setP_img(p_img);
 	cbean.setP_name(p_name);
 	cdao.addCart(cbean);
-	response.sendRedirect("Cart.jsp");
+	p.println("<script>");
+	p.println("history.go(-1)");
+	p.println("</script>");
 }
 %>
 <!-- Bottom -->

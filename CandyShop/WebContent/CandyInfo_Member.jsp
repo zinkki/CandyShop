@@ -18,7 +18,11 @@ function btn_click(str){
 	if(str=="buy"){
 		product.action="Buynow.jsp";
 	}else if(str=="cart"){
-		product.action="Cart.jsp";
+		if(confirm("NOW CART?")==true){
+		product.action="CartAction.jsp";
+		}else {
+		product.action="AddCart.jsp";
+		}
 	}else {
 		
 	}

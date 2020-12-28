@@ -53,7 +53,7 @@ if(m_id==null){
 %>
 <div class="member">
 	<h3>Welcome <%=m_id %> !!</h3>
-	<button id="mypage" type="button" onclick="location.href='Cart.jsp'">Cart</button>
+	<button id="mypage" type="button" onclick="location.href='Cart.jsp'">CART</button>
 	<button id="logout" type="button" onclick="location.href='LogoutAction.jsp'">LOGOUT</button>
 </div>
 <% 

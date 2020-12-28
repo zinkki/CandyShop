@@ -13,6 +13,21 @@ width: 300px;
 height: 300px;
 }
 </style>
+<script>
+function btn_click(str){
+	if(str=="buy"){
+		product.action="Buynow.jsp";
+	}else if(str=="cart"){
+		if(confirm("NOW CART?")==true){
+		product.action="CartAction.jsp";
+		}else {
+		product.action="AddCart.jsp";
+		}
+	}else {
+		
+	}
+}
+</script>
 </head>
 <body>
 <jsp:useBean id="mbean" class="shop.Bean">
@@ -25,7 +40,9 @@ height: 300px;
 <%
 AdminDAO adao = new AdminDAO();
 Bean bean = adao.candyInfo(mbean.getP_id());
+String m_id = (String)session.getAttribute("m_id");
 %>
+<form name="product" method="post">
 <table align="center">
 <tr height="300">
 <td width="380" align="center"><img class="product" src="img/<%=bean.getP_img() %>"></td>
@@ -42,6 +59,13 @@ Bean bean = adao.candyInfo(mbean.getP_id());
 	<option value="5">5</option>
 	</select>
 </h4>
+<input type="hidden" name="p_img" value="<%=bean.getP_img() %>">
+<input type="hidden" name="m_id" value="<%=m_id %>">
+<input type="hidden" name="p_id" value="<%=bean.getP_id() %>">
+<input type="hidden" name="p_price" value="<%=bean.getP_price()%>">
+<input type="hidden" name="p_name" value="<%=bean.getP_name() %>">
+<input type="submit" onclick='btn_click("cart");' value="ADD_CART">&nbsp;
+<input type="submit" onclick='btn_click("buy");' value="BUY_NOW">
 </td>
 </tr>
 <tr height="300">
@@ -57,6 +81,7 @@ Bean bean = adao.candyInfo(mbean.getP_id());
 <td colspan="2"><img src="img/<%=bean.getP_img4() %>"></td>
 </tr>
 </table>
+</form>
 <!-- Bottom -->
 <jsp:include page="Bottom.jsp"/>
 </body>
