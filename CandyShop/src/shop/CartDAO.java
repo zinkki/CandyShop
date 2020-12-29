@@ -48,7 +48,7 @@ public ArrayList<Bean> cartList(String m_id) {
 	getCon();
 	try {
 		String sql = "SELECT p.p_img, p.p_name, "
-				+ " c.cp_count, c.cp_price, p.p_id FROM "
+				+ " c.cp_count, c.cp_price, p.p_id, c.c_seq FROM "
 				+ "shop_cart c, shop_product p, shop_member m"
 				+ " WHERE p.p_id = c.p_id and c.m_id = m.m_id and c.m_id=?";
 		pstmt = con.prepareStatement(sql);

@@ -26,7 +26,7 @@ public void getCon() {
 	}
 }
 //JOIN
-public void m_join(Bean	bean) {
+public int m_join(Bean	bean) {
 	try {
 		getCon();
 		String sql ="INSERT INTO shop_member VALUES(?,?,?,?,?,?,?,SYSDATE,?,null,1,?)";
@@ -44,7 +44,7 @@ public void m_join(Bean	bean) {
 		con.close();
 	} catch (Exception e) {
 			e.printStackTrace();
-	}
+	}return -1; //DB오류
 }
 //LOGIN
 public int login(String m_id, String m_pass) {

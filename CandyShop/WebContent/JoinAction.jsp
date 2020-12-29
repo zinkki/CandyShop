@@ -26,7 +26,7 @@ if(m_id != null) {
 	script.println("location.href='Main.jsp'");
 	script.println("</script>");
 }
-	MemberDAO mdao = new MemberDAO();	
+MemberDAO mdao = new MemberDAO();
 //입력안된사항이 있을때
 if(bean.getM_id()==null | bean.getM_pass()==null | bean.getM_pass2()==null | bean.getM_name()==null | 
 	bean.getM_email()==null | bean.getM_address()==null | bean.getM_post()==null |
@@ -35,7 +35,7 @@ if(bean.getM_id()==null | bean.getM_pass()==null | bean.getM_pass2()==null | bea
 	script.println("<script>");
 	script.println("alert('There is an empty spot!')");
 	script.println("history.go(-1)");
-	script.println("</script>");
+	script.println("</script>");	
 //비밀번호,비밀번호확인 다를때	
 }else if(!bean.getM_pass().equals(bean.getM_pass2())){
 	PrintWriter script = response.getWriter();
@@ -45,6 +45,14 @@ if(bean.getM_id()==null | bean.getM_pass()==null | bean.getM_pass2()==null | bea
 	script.println("</script>");
 //회원가입 성공
 }else {
+	int result =mdao.m_join(bean);
+	if(result == -1) {     //아이디 중복체크!
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('ID already exists!')");
+		script.println("history.go(-1)");
+		script.println("</script>");
+	}else {
 	PrintWriter script = response.getWriter();
 	mdao.m_join(bean);
 	script.println("<script>");
@@ -55,6 +63,7 @@ if(bean.getM_id()==null | bean.getM_pass()==null | bean.getM_pass2()==null | bea
 	session.setAttribute("m_pass", bean.getM_pass());
 	session.setMaxInactiveInterval(60*3);
 	response.sendRedirect("Main.jsp");
+	}
 }
 %>
 </body>

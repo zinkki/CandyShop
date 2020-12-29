@@ -37,11 +37,11 @@ public class Bean {
 	int p_category;
 
 	//cart table
-//	String m_id; //PK&FK =memberID
+//	String m_id; //FK    =memberID
 //  String p_id; //FK    =productID
 	int cp_count; //     =p_id가같은 product의갯수
 	int cp_price; //     =p_id.p_price*cp_count
-//	int cp_allprice; //   = c_allprice+=cp_price//얘 없어도될듯..?일단 놔둠
+//  int c_seq;   //PK 
 
 	//order table
 	int o_id; //PK
@@ -250,12 +250,6 @@ public class Bean {
 	public void setCp_price(int cp_price) {
 		this.cp_price = cp_price;
 	}
-//	public int getCp_allprice() {
-//		return cp_allprice;
-//	}
-//	public void setCp_allprice(int cp_allprice) {
-//		this.cp_allprice = cp_allprice;
-//	}
 	public int getO_id() {
 		return o_id;
 	}
