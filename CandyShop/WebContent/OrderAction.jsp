@@ -14,14 +14,18 @@
 </jsp:useBean>
 <%
 OrderDAO odoa= new OrderDAO();
-String m_id = (String)session.getAttribute("m_id");
-String p_img = request.getParameter("p_img");
-String p_name= request.getParameter("p_name");
-int cp_count = Integer.parseInt(request.getParameter("cp_count"));
-int cp_price = Integer.parseInt(request.getParameter("cp_price"));
-int p_id = Integer.parseInt(request.getParameter("p_id"));
 
-System.out.println(p_id);
+String [] p_id = request.getParameterValues("p_id");
+String p_name = request.getParameter("p_name");
+
+String textp_id="";
+for(int i=0;i<p_id.length;i++) {
+	textp_id += p_id[i]+" ";
+}
+
+System.out.println(textp_id);
+System.out.println(p_name);
+
 %>
 </body>
 </html>

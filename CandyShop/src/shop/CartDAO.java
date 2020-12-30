@@ -30,7 +30,7 @@ public void getCon() {
 public void addCart(Bean bean) {
 	getCon();
 	try {
-		String sql = "INSERT INTO shop_cart VALUES(c_seq.NEXTVAL,?,?,?,?)";
+		String sql = "INSERT INTO shop_cart VALUES(c_seq.NEXTVAL,?,?,?,?,0)";
 		pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, bean.getM_id());
 		pstmt.setInt(2, bean.getP_id());
@@ -50,7 +50,7 @@ public ArrayList<Bean> cartList(String m_id) {
 		String sql = "SELECT p.p_img, p.p_name, "
 				+ " c.cp_count, c.cp_price, p.p_id, c.c_seq FROM "
 				+ "shop_cart c, shop_product p, shop_member m"
-				+ " WHERE p.p_id = c.p_id and c.m_id = m.m_id and c.m_id=?";
+				+ " WHERE p.p_id = c.p_id and c.m_id = m.m_id and c.cart_num=0 and c.m_id=?";
 		pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, m_id);
 		rs = pstmt.executeQuery();

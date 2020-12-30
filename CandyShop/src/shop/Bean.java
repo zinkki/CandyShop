@@ -42,6 +42,7 @@ public class Bean {
 	int cp_count; //     =p_id가같은 product의갯수
 	int cp_price; //     =p_id.p_price*cp_count
 //  int c_seq;   //PK 
+	int cart_num;
 
 	//order table
 	int o_id; //PK
@@ -328,5 +329,10 @@ public class Bean {
 	public void setOd_amount(int od_amount) {
 		this.od_amount = od_amount;
 	}
-	
+	public int getCart_num() {
+		return cart_num;
+	}
+	public void setCart_num(int cart_num) {
+		this.cart_num = cart_num;
+	}	
 }
