@@ -44,13 +44,11 @@ for(int i=0; i<list.size();i++){
 	bean = list.get(i);
 %>
 <tr height="100">
-<td width="50" align="center"><input type="checkbox" name="p_id" value="<%=bean.getP_id()%>">
-<input type="hidden" name="p_name" value="<%=bean.getP_name() %>"></td>
+<td width="50" align="center"><input type="checkbox" name="p_id" value="<%=bean.getP_id()%>"></td>
 <td width="200" align="center"><img class="product" src="img/<%=bean.getP_img() %>"></td>
-<td align="center"><%=bean.getP_name() %><input type="hidden" name="p_name" value="<%=bean.getP_name() %>"></td>
-<td align="center"><%=bean.getCp_count() %><input type="hidden" name="cp_count" value="<%=bean.getCp_count() %>"></td>
-<td align="center">\<%=bean.getCp_price() %><input type="hidden" name="cp_price" value="<%=bean.getCp_price() %>"><br>
-</td>
+<td align="center"><%=bean.getP_name() %></td>
+<td align="center"><%=bean.getCp_count() %></td>
+<td align="center">\<%=bean.getCp_price() %><br></td>
 <td align="center">
 <input type="button" value="X" onclick="if(confirm('Delete it?')){
 	location.href='CartDeleteAction.jsp?p_id=<%=bean.getP_id()%>'

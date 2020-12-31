@@ -47,6 +47,7 @@ public class Bean {
 	//order table
 	int o_id; //PK
 //	String m_id; FK
+//  int p_id;    FK
 	String o_date;
 //  String m_name;
 //  String m_address;

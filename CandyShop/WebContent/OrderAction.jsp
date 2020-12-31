@@ -14,18 +14,16 @@
 </jsp:useBean>
 <%
 OrderDAO odoa= new OrderDAO();
+String m_id = (String)session.getAttribute("m_id");
 
-String [] p_id = request.getParameterValues("p_id");
-String p_name = request.getParameter("p_name");
-
-String textp_id="";
-for(int i=0;i<p_id.length;i++) {
-	textp_id += p_id[i]+" ";
+String [] pid = request.getParameterValues("p_id");
+int [] p_id = new int[pid.length];
+for(int i=0;i<pid.length;i++) {
+	System.out.println(pid[i]);
+	odoa.addOrder(obean);
+	//여기다 order테이블에추가하는거 메소드만들면되겠다!!(p_id,m_id로가져오게해서)
+	//그리고 cart테이블cart_num=1로 업데이트해주기!!
 }
-
-System.out.println(textp_id);
-System.out.println(p_name);
-
 %>
 </body>
 </html>
