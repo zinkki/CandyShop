@@ -31,12 +31,12 @@ ArrayList<Bean> list = cdao.cartList(m_id);
 <form action="OrderAction.jsp" method="post">
 <table align="center" border="1">
 <tr height="40">
-<td width="50" align="center">num</td>
-<td width="200" align="center">product img</td>
-<td align="center" width="100">Product Name</td>
-<td align="center" width="100">amount</td>
-<td align="center" width="100">Price</td>
-<td align="center" width="50">Delete</td>
+<td width="50" align="center">Num</td>
+<td width="200" align="center">Product Img</td>
+<td width="100" align="center">Product Name</td>
+<td width="100" align="center">Amount</td>
+<td width="100" align="center">Price</td>
+<td width="50"  align="center">Delete</td>
 </tr>
 <%
 int allPrice = 0;
