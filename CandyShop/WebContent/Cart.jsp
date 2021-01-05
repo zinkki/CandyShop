@@ -14,6 +14,13 @@ width: 100px;
 height: 100px;
 }
 </style>
+<script>
+function btn_click(str) {
+	if(str=="order"){
+		cart.action="OrderAction.jsp";
+	}
+}
+</script>
 </head>
 <body>
 <!-- Top -->
@@ -28,7 +35,7 @@ String m_id = (String)session.getAttribute("m_id");
 ArrayList<Bean> list = cdao.cartList(m_id);
 %>
 <h2 align="center">Cart</h2>
-<form action="OrderAction.jsp" method="post">
+<form name="cart" method="post">
 <table align="center" border="1">
 <tr height="40">
 <td width="50" align="center">Num</td>
@@ -60,7 +67,7 @@ allPrice += bean.getCp_price();
 %>
 <tr height="40">
 <td colspan="4" align="center">
-<input type="submit" value="ORDER"></td>
+<input type="submit" value="ORDER" onclick='btn_click("order")'></td>
 <td colspan="2" align="center"><h3><b>\<%=allPrice %></b></h3></td>
 </tr>
 </table>

@@ -29,7 +29,7 @@ public ArrayList<Bean> orderList(String m_id) {
 	ArrayList<Bean> list = new ArrayList<>();
 	getCon();
 	try {
-		String sql = "SELECT p.p_img, p.p_name, c.cp_count, c.cp_price"+
+		String sql = "SELECT p.p_id, p.p_img, p.p_name, c.cp_count, c.cp_price"+
 				" FROM shop_cart c, shop_product p,"+
 				 "shop_member m WHERE p.p_id=c.p_id and"+
 				 " m.m_id=c.m_id and"+
@@ -39,10 +39,11 @@ public ArrayList<Bean> orderList(String m_id) {
 		rs = pstmt.executeQuery();
 		while(rs.next()) {
 			Bean bean = new Bean();
-			bean.setP_img(rs.getString(1));
-			bean.setP_name(rs.getString(2));
-			bean.setCp_count(rs.getInt(3));
-			bean.setCp_price(rs.getInt(4));
+			bean.setP_id(rs.getInt(1));
+			bean.setP_img(rs.getString(2));
+			bean.setP_name(rs.getString(3));
+			bean.setCp_count(rs.getInt(4));
+			bean.setCp_price(rs.getInt(5));
 			list.add(bean);
 		}	con.close();
 	} catch (Exception e) {
@@ -51,7 +52,19 @@ public ArrayList<Bean> orderList(String m_id) {
 	return list;
 }
 
-
+public void OrderCancel(Bean bean) {
+	getCon();
+	try {
+		String sql = "UPDATE shop_cart SET cart_num=0 WHERE m_id=? and p_id=? ";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, bean.getM_id());
+		pstmt.setInt(2, bean.getP_id());
+		pstmt.executeUpdate();
+		con.close();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+}
 
 
 

@@ -16,8 +16,8 @@ height: 100px;
 </style>
 <script>
 function btn_click(str) {
-	if(str=="order"){
-		product.action="OrderAction.jsp";
+	if(str=="buy"){
+		product.action="BuyAction.jsp";
 	}else if(str=="cancel"){
 		product.action="OrderCancelAction.jsp";
 	}
@@ -28,11 +28,10 @@ function btn_click(str) {
 <!-- Top -->
 <jsp:include page="Top.jsp"/>
 <!-- TopNav -->
-<jsp:include page="TopNav.jsp"/>
 <%
 OrderDAO odao = new OrderDAO();
-Bean bean = new Bean();
 String m_id = (String)session.getAttribute("m_id");
+Bean bean = new Bean();
 ArrayList<Bean> list = odao.orderList(m_id);
 %>
 <h2 align="center">Order</h2>
@@ -51,7 +50,8 @@ for(int i=0;i<list.size();i++) {
 	bean = list.get(i);
 %>
 <tr height="40">
-<td width="50" align="center"><%=i+1 %></td>
+<td width="50" align="center"><%=i+1 %>
+<input type="hidden" name="p_id" value="<%=bean.getP_id() %>"></td>
 <td width="200" align="center"><img class="product" src="img/<%=bean.getP_img() %>"></td>
 <td width="100" align="center"><%=bean.getP_name() %></td>
 <td width="100" align="center"><%=bean.getCp_count() %></td>
@@ -63,7 +63,7 @@ allPrice += bean.getCp_price();
 %>
 <tr height="40">
 <td colspan="4" align="center">
-<input type="submit" value="ORDER" onclick='btn_click("order")'>&nbsp;&nbsp;
+<input type="submit" value="BUY" onclick='btn_click("buy")'>&nbsp;&nbsp;
 <input type="submit" value="CANCEL" onclick='btn_click("cancel")'></td>
 <td colspan="2" align="center"><h3><b>\<%=allPrice %></b></h3></td>
 </tr>
