@@ -2,12 +2,6 @@ package shop;
 
 public class Bean {
 
-	//admin table
-	String a_id; //PK
-	String a_pass;
-	String a_name;
-	String a_date;
-
 	//member table
 	String m_id; //PK
 	String m_pass;
@@ -45,17 +39,15 @@ public class Bean {
 	int cart_num;
 
 	//order table
-	int o_id; //PK
+//	int o_seq; //PK
 //	String m_id; FK
 //  int p_id;    FK
 	String o_date;
 //  String m_name;
 //  String m_address;
 //	String m_post;
-	int o_amount;
 	int o_payment;
-	int o_delivery;
-	int o_invoice;
+
 
 	//review table
 	String r_id; //PK
@@ -71,31 +63,7 @@ public class Bean {
 //  int p_id; FK
 //  int o_id; FK
 	int od_amount;
-	
-	public String getA_id() {
-		return a_id;
-	}
-	public void setA_id(String a_id) {
-		this.a_id = a_id;
-	}
-	public String getA_pass() {
-		return a_pass;
-	}
-	public void setA_pass(String a_pass) {
-		this.a_pass = a_pass;
-	}
-	public String getA_name() {
-		return a_name;
-	}
-	public void setA_name(String a_name) {
-		this.a_name = a_name;
-	}
-	public String getA_date() {
-		return a_date;
-	}
-	public void setA_date(String a_date) {
-		this.a_date = a_date;
-	}
+
 	public String getM_id() {
 		return m_id;
 	}
@@ -252,41 +220,17 @@ public class Bean {
 	public void setCp_price(int cp_price) {
 		this.cp_price = cp_price;
 	}
-	public int getO_id() {
-		return o_id;
-	}
-	public void setO_id(int o_id) {
-		this.o_id = o_id;
-	}
 	public String getO_date() {
 		return o_date;
 	}
 	public void setO_date(String o_date) {
 		this.o_date = o_date;
 	}
-	public int getO_amount() {
-		return o_amount;
-	}
-	public void setO_amount(int o_amount) {
-		this.o_amount = o_amount;
-	}
 	public int getO_payment() {
 		return o_payment;
 	}
 	public void setO_payment(int o_payment) {
 		this.o_payment = o_payment;
-	}
-	public int getO_delivery() {
-		return o_delivery;
-	}
-	public void setO_delivery(int o_delivery) {
-		this.o_delivery = o_delivery;
-	}
-	public int getO_invoice() {
-		return o_invoice;
-	}
-	public void setO_invoice(int o_invoice) {
-		this.o_invoice = o_invoice;
 	}
 	public String getR_id() {
 		return r_id;

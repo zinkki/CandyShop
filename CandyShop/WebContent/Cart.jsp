@@ -17,7 +17,11 @@ height: 100px;
 <script>
 function btn_click(str) {
 	if(str=="order"){
+		if(confirm("Would you like to order your choice?")==true){
 		cart.action="OrderAction.jsp";
+		}else {
+			return;
+		}
 	}
 }
 </script>

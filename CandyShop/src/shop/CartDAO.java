@@ -69,23 +69,6 @@ public ArrayList<Bean> cartList(String m_id) {
 	return list;
 }
 
-//buy_now버튼클릭시 바로구매하기
-public void buyNow(Bean bean) {
-	getCon();
-	try {
-		String sql = "INSERT INTO shop_buyNow VALUES(bn_seq.NEXTVAL,?,?,?,?)";
-		pstmt = con.prepareStatement(sql);
-		pstmt.setString(1, bean.getM_id());
-		pstmt.setInt(2, bean.getP_id());
-		pstmt.setInt(3, bean.getCp_count());
-		pstmt.setInt(4, bean.getCp_price());
-		pstmt.executeUpdate();
-		con.close();
-	} catch (Exception e) {
-		e.printStackTrace();
-	}
-}
-
 //Cart에담긴목록 x버튼 클릭해서 지우기
 public void deleteCart(int p_id) {
 	getCon();

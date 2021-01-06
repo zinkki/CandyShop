@@ -1,3 +1,4 @@
+<%@ page import="shop.OrderDAO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,12 +8,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-<!-- Top -->
-<jsp:include page="Top.jsp"/>
-<!-- TopNav -->
-<jsp:include page="TopNav.jsp"/>
-
-<!-- Bottom -->
-<jsp:include page="Bottom.jsp"/>
+<jsp:useBean id="bean" class="shop.Bean">
+	<jsp:setProperty name="bean" property="*"/>
+</jsp:useBean>
+<%
+OrderDAO odao = new OrderDAO();
+String m_id = (String)session.getAttribute("m_id");
+String [] p = request.getParameterValues("p_id");
+for(int i=0;i<p.length;i++) {
+	int p_id = Integer.parseInt(p[i]);
+	bean.setM_id(m_id);
+	bean.setP_id(p_id);
+	odao.addBuy(bean);
+}
+	response.sendRedirect("Buy.jsp");
+%>
 </body>
 </html>

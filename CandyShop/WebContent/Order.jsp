@@ -17,7 +17,11 @@ height: 100px;
 <script>
 function btn_click(str) {
 	if(str=="buy"){
-		product.action="BuyAction.jsp";
+		if(confirm("Are you going to buy it?")==true){
+			product.action="BuyAction.jsp";
+		}else {
+			return;
+		}		
 	}else if(str=="cancel"){
 		product.action="OrderCancelAction.jsp";
 	}
@@ -61,8 +65,9 @@ for(int i=0;i<list.size();i++) {
 allPrice += bean.getCp_price();
 }
 %>
-<tr height="40">
+<tr height="90">
 <td colspan="4" align="center">
+* \10,000 or more free shipping!! *<br><br>
 <input type="submit" value="BUY" onclick='btn_click("buy")'>&nbsp;&nbsp;
 <input type="submit" value="CANCEL" onclick='btn_click("cancel")'></td>
 <td colspan="2" align="center"><h3><b>\<%=allPrice %></b></h3></td>

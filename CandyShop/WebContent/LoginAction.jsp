@@ -26,7 +26,7 @@ if(result==1) {
 	p.println("</script>");
 	session.setAttribute("m_id", bean.getM_id());
 	session.setAttribute("m_pass", bean.getM_pass());
-	session.setMaxInactiveInterval(60*3);
+	session.setMaxInactiveInterval(60*30);
 	response.sendRedirect("Main.jsp");
 }else if(result==0) {
 	//비밀번호틀림
