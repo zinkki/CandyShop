@@ -19,7 +19,7 @@ height: 110px;
 function btn_click(str) {
 	if(str=="pay"){
 		if(confirm("Are you really going to buy this?")==true){
-		buy.action="OrderCompleted.jsp";
+		buy.action="OrderCompletedAction.jsp";
 		}else {
 			return;
 		}

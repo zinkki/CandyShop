@@ -8,13 +8,35 @@ public class OrderDAO extends CartDAO{
 public void addOrder(Bean bean) {
 	getCon();
 	try {
-//		String sql = "INSERT INTO shop_order VALUES(o_seq.NEXTVAL,?,?,SYSDATE)";
-//		pstmt = con.prepareStatement(sql);
-//		pstmt.setString(1, bean.getM_id());
-//		pstmt.setInt(2, bean.getP_id());
-//		pstmt.executeUpdate();
-		String sql2 = "UPDATE shop_cart SET cart_num=1 WHERE m_id=? and p_id=?";
+		String sql = "INSERT INTO shop_order VALUES(o_seq.NEXTVAL,?,?,SYSDATE)";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, bean.getM_id());
+		pstmt.setInt(2, bean.getP_id());
+		pstmt.executeUpdate();
+	} catch(Exception e) {
+		e.printStackTrace();
+	}
+}
+//CartList에서 선택한것만 OrderList로가져가기
+public void changeCart_num(Bean bean) {
+	getCon();
+	try {
+	String sql2 = "UPDATE shop_cart SET cart_num=1 WHERE m_id=? and p_id=?";
 		pstmt = con.prepareStatement(sql2);
+		pstmt.setString(1, bean.getM_id());
+		pstmt.setInt(2, bean.getP_id());
+		pstmt.executeUpdate();
+		con.close();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+}
+//BuyNow눌렀을때 그값만 BuyNowList로 가져가기
+public void changeCart_num2(Bean bean) {
+	getCon();
+	try {
+	String sql = "UPDATE shop_cart SET cart_num=-1 WHERE m_id=? and p_id=?";
+		pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, bean.getM_id());
 		pstmt.setInt(2, bean.getP_id());
 		pstmt.executeUpdate();
@@ -51,7 +73,46 @@ public ArrayList<Bean> orderList(String m_id) {
 	}
 	return list;
 }
-
+public ArrayList<Bean> buyNowList(String m_id) {
+	ArrayList<Bean> list = new ArrayList<>();
+	getCon();
+	try {
+		String sql = "SELECT p.p_id, p.p_img, p.p_name, c.cp_count, c.cp_price"+
+				" FROM shop_cart c, shop_product p,"+
+				 "shop_member m WHERE p.p_id=c.p_id and"+
+				 " m.m_id=c.m_id and"+
+				 " c.cart_num=-1 and c.m_id=?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, m_id);
+		rs = pstmt.executeQuery();
+		while(rs.next()) {
+			Bean bean = new Bean();
+			bean.setP_id(rs.getInt(1));
+			bean.setP_img(rs.getString(2));
+			bean.setP_name(rs.getString(3));
+			bean.setCp_count(rs.getInt(4));
+			bean.setCp_price(rs.getInt(5));
+			list.add(bean);
+		}	con.close();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return list;
+}
+public void buyNowCancel(String m_id, int p_id) {
+	getCon();
+	try {
+		String sql = "DELETE shop_cart WHERE cart_num=-1 and m_id=? and p_id=?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, m_id);
+		pstmt.setInt(2, p_id);
+		pstmt.executeUpdate();
+		con.close();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	
+}
 public void OrderCancel(Bean bean) {
 	getCon();
 	try {
@@ -110,11 +171,10 @@ public ArrayList<Bean> buyList(String m_id) {
 public void buyNow(Bean bean) {
 	getCon();
 	try {
-		String sql = "INSERT INTO shop_order VALUES(o_seq.NEXTVAL,?,?,SYSDATE,?)";
+		String sql = "INSERT INTO shop_order VALUES(o_seq.NEXTVAL,?,?,SYSDATE)";
 		pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, bean.getM_id());
 		pstmt.setInt(2, bean.getP_id());
-		pstmt.setInt(3, bean.getO_payment());
 		pstmt.executeUpdate();
 		con.close();
 	} catch (Exception e) {
@@ -125,10 +185,10 @@ public Bean buyNowOrder(String m_id) {
 	getCon();
 	Bean bean = new Bean();
 	try {
-		String sql = "SELECT DISTINCT p.p_img, p.p_name, c.cp_count, o.o_payment, p.p_id, "
+		String sql = "SELECT DISTINCT p.p_img, p.p_name, c.cp_count, c.cp_price, p.p_id "
 				+ "FROM shop_product p , shop_member m, shop_cart c,"
 				+ " shop_order o WHERE p.p_id=o.p_id and m.m_id=o.m_id and "
-				+ "c.cp_price=o.o_payment and o.m_id=? ";
+				+ "o.m_id=? ";
 		pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, m_id);
 		rs = pstmt.executeQuery();
@@ -136,7 +196,7 @@ public Bean buyNowOrder(String m_id) {
 			bean.setP_img(rs.getString(1));
 			bean.setP_name(rs.getString(2));
 			bean.setCp_count(rs.getInt(3));
-			bean.setO_payment(rs.getInt(4));
+			bean.setCp_price(rs.getInt(4));
 			bean.setP_id(rs.getInt(5));
 		}	con.close();
 	} catch (Exception e) {

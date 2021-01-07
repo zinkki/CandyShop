@@ -28,7 +28,7 @@ if(request.getParameter("p_id")==null){
 	int p_id = Integer.parseInt(p[i]);
 	bean.setM_id(m_id);
 	bean.setP_id(p_id);
-	odao.addOrder(bean);
+	odao.changeCart_num(bean);
 }
 	response.sendRedirect("Order.jsp");
 }

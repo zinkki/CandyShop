@@ -1,3 +1,4 @@
+<%@ page import="shop.CartDAO" %>
 <%@ page import="shop.OrderDAO" %>
 <%@ page import="java.io.PrintWriter" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -23,12 +24,13 @@ height:200px;
 <!-- TopNav -->
 <jsp:include page="TopNav.jsp"/>
 <%
+CartDAO cdao = new CartDAO();
 OrderDAO odao = new OrderDAO();
 String m_id = (String)session.getAttribute("m_id");
 int p_id = Integer.parseInt(request.getParameter("p_id"));
 int cp_count = Integer.parseInt(request.getParameter("cp_count"));
 int p_price = Integer.parseInt(request.getParameter("p_price"));
-int o_payment = p_price*cp_count;
+int cp_price = p_price*cp_count;
 String p_img = request.getParameter("p_img");
 String p_name = request.getParameter("p_name");
 
@@ -40,15 +42,12 @@ if(m_id==null) {
 	p.println("</script>");
 }else {
 	bean.setM_id(m_id);
-	bean.setCp_count(cp_count);
-	bean.setP_price(p_price);
 	bean.setP_id(p_id);
-	bean.setO_payment(o_payment);
-	bean.setP_img(p_img);
-	bean.setP_name(p_name);
-	odao.buyNow(bean);
-	odao.buyNowOrder(m_id);
-	response.sendRedirect("Order.jsp");
+	bean.setCp_count(cp_count);
+	bean.setCp_price(cp_price);
+	cdao.addCart(bean);
+	odao.changeCart_num2(bean);
+	response.sendRedirect("BuynowList.jsp");
 }
 %>
 <!-- Bottom -->
