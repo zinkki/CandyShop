@@ -76,6 +76,8 @@ allPrice += bean.getCp_price();
 </tr>
 </table>
 </form>
+<br><br>
+<jsp:include page="OrderCompleted.jsp"/>
 <!-- Bottom -->
 <jsp:include page="Bottom.jsp"/>
 </body>

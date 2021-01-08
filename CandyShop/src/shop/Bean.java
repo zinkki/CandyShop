@@ -43,11 +43,8 @@ public class Bean {
 //	String m_id; FK
 //  int p_id;    FK
 	String o_date;
-//  String m_name;
-//  String m_address;
-//	String m_post;
-	int o_payment;
-
+	int o_cp_count; //=shop_cart. cp_count
+	int o_cp_price; //=shop_cart. cp_price
 
 	//review table
 	String r_id; //PK
@@ -59,11 +56,23 @@ public class Bean {
 	String r_date;
 	
 	//order_detail table
-	int od_id; //PK
+//	int od_id; //PK
 //  int p_id; FK
 //  int o_id; FK
 	int od_amount;
 
+	public int getO_cp_count() {
+		return o_cp_count;
+	}
+	public void setO_cp_count(int o_cp_count) {
+		this.o_cp_count = o_cp_count;
+	}
+	public int getO_cp_price() {
+		return o_cp_price;
+	}
+	public void setO_cp_price(int o_cp_price) {
+		this.o_cp_price = o_cp_price;
+	}
 	public String getM_id() {
 		return m_id;
 	}
@@ -226,12 +235,6 @@ public class Bean {
 	public void setO_date(String o_date) {
 		this.o_date = o_date;
 	}
-	public int getO_payment() {
-		return o_payment;
-	}
-	public void setO_payment(int o_payment) {
-		this.o_payment = o_payment;
-	}
 	public String getR_id() {
 		return r_id;
 	}
@@ -261,12 +264,6 @@ public class Bean {
 	}
 	public void setR_date(String r_date) {
 		this.r_date = r_date;
-	}
-	public int getOd_id() {
-		return od_id;
-	}
-	public void setOd_id(int od_id) {
-		this.od_id = od_id;
 	}
 	public int getOd_amount() {
 		return od_amount;
