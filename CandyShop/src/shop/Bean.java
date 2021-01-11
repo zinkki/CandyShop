@@ -45,6 +45,7 @@ public class Bean {
 	String o_date;
 	int o_cp_count; //=shop_cart. cp_count
 	int o_cp_price; //=shop_cart. cp_price
+	int order_num;
 
 	//review table
 	String r_id; //PK
@@ -61,6 +62,12 @@ public class Bean {
 //  int o_id; FK
 	int od_amount;
 
+	public int getOrder_num() {
+		return order_num;
+	}
+	public void setOrder_num(int order_num) {
+		this.order_num = order_num;
+	}
 	public int getO_cp_count() {
 		return o_cp_count;
 	}

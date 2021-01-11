@@ -15,10 +15,8 @@
 </jsp:useBean>
 
 <%
-String m_id = null;
-if(session.getAttribute("m_id") != null) {
-	m_id = (String)session.getAttribute("m_id");
-}
+String m_id = (String)session.getAttribute("m_id");
+
 if(m_id != null) {
 	PrintWriter script= response.getWriter();
 	script.println("<script>");
@@ -45,14 +43,14 @@ if(bean.getM_id()==null | bean.getM_pass()==null | bean.getM_pass2()==null | bea
 	script.println("</script>");
 //회원가입 성공
 }else {
-	int result =mdao.m_join(bean);
+	int result = mdao.m_join(bean);
 	if(result == -1) {     //아이디 중복체크!
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('ID already exists!')");
 		script.println("history.go(-1)");
 		script.println("</script>");
-	}else {
+	}else if(result != -1) {
 	PrintWriter script = response.getWriter();
 	mdao.m_join(bean);
 	script.println("<script>");

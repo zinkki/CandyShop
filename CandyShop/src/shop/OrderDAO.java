@@ -205,22 +205,24 @@ public Bean buyNowOrder(String m_id) {
 public void insertOrder(Bean bean) {
 	getCon();
 	try {
-		String sql = "INSERT INTO shop_order(o_seq, m_id, p_id, o_date, o_cp_count, o_cp_price)"
-				+ " SELECT o_seq.NEXTVAL, m_id, p_id, SYSDATE, cp_count, cp_price FROM "
-				+ "shop_cart WHERE cart_num=-1 AND m_id=?";
-		pstmt = con.prepareStatement(sql);
-		pstmt.setString(1, bean.getM_id());
-		pstmt.executeUpdate();
-		con.close();
+		  String sql2 ="INSERT INTO shop_order VALUES(o_seq.NEXTVAL,?,?,SYSDATE,?,?,0)";
+		  pstmt =con.prepareStatement(sql2);
+		  pstmt.setString(1, bean.getM_id());
+		  pstmt.setInt(2, bean.getP_id());
+		  pstmt.setInt(3, bean.getO_cp_count());
+		  pstmt.setInt(4, bean.getO_cp_price());
+		  pstmt.executeUpdate();
+		  con.close();
 	} catch (Exception e) {
 		e.printStackTrace();
 	}
 }
+
 //OrderTable에 데이터 insert됐으면 이제 cartTable에서는 빼기~ㅋㅋ
 public void pay_deleteCart(String m_id) {
 	getCon();
 	try {
-		String sql = "UPDATE shop_cart SET cart_mum=-2 WHERE cart_num=-1 AND m_id=?";
+		String sql = "DELETE shop_cart WHERE cart_num=-1 AND m_id=?";
 		pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, m_id);
 		pstmt.executeUpdate();
@@ -235,23 +237,61 @@ public ArrayList<Bean> payment(String m_id) {
 	ArrayList<Bean> list = new ArrayList<>();
 	getCon();
 	try {
-		String sql = "SELECT DISTINCT p.p_id, o.o_date, p.p_img, p.p_name, "
-				+ "c.cp_count, c.cp_price FROM "
-				+ "shop_order o, shop_member m, shop_cart c, shop_product p "
-				+ "WHERE m.m_id=o.m_id and p.p_id=o.p_id and "
-				+ "o.o_cp_count=c.cp_count and o.o_cp_price=c.cp_price and "
-				+ "c.cart_num=-2 and o.m_id=?";
+		String sql = "SELECT DISTINCT o.o_date, o.p_id, p.p_img, p.p_name,"
+				+ "o.o_cp_count, o.o_cp_price FROM shop_order o, shop_member m,"
+				+ "shop_cart c, shop_product p WHERE m.m_id=o.m_id and p.p_id=o.p_id"
+				+ " AND o.order_num=0 AND o.m_id=?";
 		pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, m_id);
 		rs = pstmt.executeQuery();
 		while(rs.next()) {
 			Bean bean = new Bean();
-			bean.setP_id(rs.getInt(1));
-			bean.setO_date(rs.getString(2).toString());
+			bean.setO_date(rs.getString(1).toString());
+			bean.setP_id(rs.getInt(2));
 			bean.setP_img(rs.getString(3));
 			bean.setP_name(rs.getString(4));
-			bean.setCp_count(rs.getInt(5));
-			bean.setCp_price(rs.getInt(6));
+			bean.setO_cp_count(rs.getInt(5));
+			bean.setO_cp_price(rs.getInt(6));
+			list.add(bean);
+		}	con.close();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return list;
+}
+
+//주문까지완료후, 쇼핑계속하기버튼눌렀을때!order_num=1로바꾸기
+public void change_OrderNum(String m_id) {
+	getCon();
+	try {
+		String sql = "UPDATE shop_order SET order_num=1 where order_num=0 AND m_id=?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, m_id);
+		pstmt.executeUpdate();
+		con.close();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+}
+public ArrayList<Bean> order(String m_id) {
+	ArrayList<Bean> list = new ArrayList<>();
+	getCon();
+	try {
+		String sql = "SELECT DISTINCT o.o_date, o.p_id, p.p_img, p.p_name,"
+				+ "o.o_cp_count, o.o_cp_price FROM shop_order o, shop_member m,"
+				+ "shop_cart c, shop_product p WHERE m.m_id=o.m_id and p.p_id=o.p_id"
+				+ " AND o.order_num=1 AND o.m_id=?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, m_id);
+		rs = pstmt.executeQuery();
+		while(rs.next()) {
+			Bean bean = new Bean();
+			bean.setO_date(rs.getString(1).toString());
+			bean.setP_id(rs.getInt(2));
+			bean.setP_img(rs.getString(3));
+			bean.setP_name(rs.getString(4));
+			bean.setO_cp_count(rs.getInt(5));
+			bean.setO_cp_price(rs.getInt(6));
 			list.add(bean);
 		}	con.close();
 	} catch (Exception e) {

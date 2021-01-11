@@ -84,8 +84,10 @@ for(int i=0;i<list.size();i++) {
 <input type="hidden" name="p_id" value="<%=bean.getP_id() %>"></td>
 <td width="100" align="center"><img class="product" src="img/<%=bean.getP_img() %>"></td>
 <td width="100" align="center"><%=bean.getP_name() %><br>( \<%=bean.getP_price() %> )</td>
-<td width="100" align="center"><%=bean.getCp_count() %></td>
-<td width="100" align="center">\<%=bean.getCp_price() %></td>
+<td width="100" align="center"><%=bean.getCp_count() %>
+<input type="hidden" name="cp_count" value="<%=bean.getCp_count() %>"></td>
+<td width="100" align="center">\<%=bean.getCp_price() %>
+<input type="hidden" name="cp_price" value="<%=bean.getCp_price() %>"></td>
 </tr>
 <%
 allPrice += bean.getCp_price();

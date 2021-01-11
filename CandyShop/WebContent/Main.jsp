@@ -7,17 +7,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+.product {
+width: 800px;
+height: 650px;
+}
+</style>
 </head>
 <body>
-<table>
-
+<table align="center">
 <!-- Top -->
 <jsp:include page="Top.jsp"/>
 <!-- TopNav -->
 <jsp:include page="TopNav.jsp"/>
+<tr>
+<td align="center"><img class="product" src="img/main.jpg"></td>
+</tr>
+</table>
 <!-- Bottom -->
 <jsp:include page="Bottom.jsp"/>
-
-</table>
 </body>
 </html>
