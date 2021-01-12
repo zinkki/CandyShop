@@ -30,7 +30,7 @@ if(m_id==null) {
 	PrintWriter p = response.getWriter();
 	p.println("<script>");
 	p.println("alert('You need Login!')");
-	p.println("history.go(-1)");
+	p.println("location.href ='LoginForm.jsp'");
 	p.println("</script>");
 }else {
 	PrintWriter p = response.getWriter();
