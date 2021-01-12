@@ -68,7 +68,7 @@
 <jsp:include page="Top.jsp"/>
 <!-- TopNav -->
 <jsp:include page="TopNav.jsp"/>
-
+<br><br><br>
 <form action="JoinAction.jsp" method="post">
 		<table border="1" align="center">
 			<tr height="50">
@@ -131,6 +131,7 @@
 			</tr>
 		</table>
 	</form>
+<br><br><br><br>
 <!-- Bottom -->
 <jsp:include page="Bottom.jsp"/>
 </body>
