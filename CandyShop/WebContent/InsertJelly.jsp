@@ -54,6 +54,7 @@
 </table>
 </form>
 <!-- Bottom -->
+<br><br><br><br>
 <jsp:include page="Bottom.jsp"/>
 </body>
 </html>
