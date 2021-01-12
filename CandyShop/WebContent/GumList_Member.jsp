@@ -56,6 +56,7 @@ for(int i=0;i<list.size();i++) {
 }
 %>
 </div>
+<br><br><br><br>
 <!-- Bottom -->
 <jsp:include page="Bottom.jsp"/>
 </body>
