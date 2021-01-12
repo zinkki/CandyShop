@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 <style>
 .loginForm {
-background-color: #CEE3F6;
 margin: 30px;
 }
 </style>
@@ -18,7 +17,7 @@ margin: 30px;
 <jsp:include page="Top.jsp"/>
 <!-- TopNav -->
 <jsp:include page="TopNav.jsp"/>
-
+<br><br><br><br><br>
 <form action="LoginAction.jsp" method="post">
 <div class="loginForm">
 	<table align="center" border="1">
@@ -40,7 +39,7 @@ margin: 30px;
 </table>
 </div>
 </form>
-
+<br><br><br><br><br><br><br><br><br><br><br>
 <!-- Bottom -->
 <jsp:include page="Bottom.jsp"/>
 
