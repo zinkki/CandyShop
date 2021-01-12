@@ -18,6 +18,7 @@ String m_id=(String)session.getAttribute("m_id");
 String [] pid = request.getParameterValues("p_id");
 String [] ocp_c= request.getParameterValues("cp_count");
 String [] ocp_p = request.getParameterValues("cp_price");
+String [] pstock = request.getParameterValues("p_stock");
 if(m_id==null) {
 	PrintWriter p = response.getWriter();
 	p.println("<script>");
@@ -26,17 +27,21 @@ if(m_id==null) {
 	p.println("</script>");
 }else {	
 	int j= pid.length;
-	for(int i=0;i<j;i++){
-	int p_id = Integer.parseInt(pid[i]);
-	obean.setP_id(p_id);
-	int o_cp_count = Integer.parseInt(ocp_c[i]);
-	obean.setO_cp_count(o_cp_count);
-	int o_cp_price = Integer.parseInt(ocp_p[i]);
-	obean.setO_cp_price(o_cp_price);
-	obean.setM_id(m_id);
-	odao.insertOrder(obean);
+	for(int i=0;i<j;i++) {
+		int p_id = Integer.parseInt(pid[i]);
+		obean.setP_id(p_id);
+		int o_cp_count = Integer.parseInt(ocp_c[i]);
+		obean.setO_cp_count(o_cp_count);
+		int o_cp_price = Integer.parseInt(ocp_p[i]);
+		obean.setO_cp_price(o_cp_price);
+		obean.setM_id(m_id);
+		odao.insertOrder(obean);
+		int p_stock = Integer.parseInt(pstock[i]);
+		p_stock = p_stock-o_cp_count;
+		odao.updateStock(p_stock, p_id);
 	}
-response.sendRedirect("OrderCompleted.jsp");
+	
+	response.sendRedirect("OrderCompleted.jsp");
 }
 %>
 </body>

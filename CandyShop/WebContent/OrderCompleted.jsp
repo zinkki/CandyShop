@@ -10,8 +10,8 @@
 <title>Insert title here</title>
 <style>
 .product {
-width: 100px;
-height: 100px;
+width: 130px;
+height: 130px;
 }
 </style>
 </head>
@@ -24,13 +24,13 @@ String m_id = (String)session.getAttribute("m_id");
 ArrayList<Bean> list = odao.payment(m_id);
 %>
 
-<h2 align="center"><b>Order List</b></h2>
+
 <form action="CompletedAction.jsp" method="post">
 <table align="center" border="1">
 <tr height="40">
 <td width="100" align="center">Date</td>
-<td width="200" align="center">Product Information</td>
-<td width="200" align="center">Delivery Status</td>
+<td width="300" align="center">Product Information</td>
+
 
 </tr>
 <tr height="100">
@@ -50,7 +50,7 @@ for(int i=0;i<list.size();i++){
 <br><%=bean.getP_name() %>(*<%=bean.getO_cp_count() %>)
 <h3 align="right">\<%=bean.getO_cp_price() %></h3>
 </td>
-<td width="200" align="center">Preparing for Delivery.</td>
+
 
 </tr>
 <%
@@ -59,7 +59,7 @@ for(int i=0;i<list.size();i++){
 <tr height="50">
 <td colspan="4" align="center"><input type="submit" value="OK">
 </table>
-
+<br><br><br><br>
 </form>
 </body>
 </html>
