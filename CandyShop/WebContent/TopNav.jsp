@@ -9,7 +9,7 @@
 ul {
 padding:15px;
 margin:30px;
-background-color: #CEE3F6;
+background-color: #d5e1e3;
 text-align: center;
 }
 li {
@@ -24,7 +24,7 @@ display: inline-block;
 width: 150px;
 text-decoration: none;
 font-weight: bold;
-background-color: #CEE3F6;
+background-color: #d5e1e3;
 font-size: 18px;
 }
 </style>

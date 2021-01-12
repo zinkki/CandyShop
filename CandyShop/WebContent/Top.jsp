@@ -60,7 +60,7 @@ if(m_id==null){
 }
 %>
 <div class="logo">
-	<img alt="" src="img/main2.jpg" height="150" width="400">
+	<a href="Main.jsp"><img alt="" src="img/main2.jpg" height="150" width="400"></a>
 </div>
 </body>
 </html>
