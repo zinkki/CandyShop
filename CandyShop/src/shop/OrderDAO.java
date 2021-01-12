@@ -146,7 +146,7 @@ public ArrayList<Bean> buyList(String m_id) {
 	getCon();
 	try {
 		String sql = "SELECT p.p_id, p.p_img, p.p_name, c.cp_count, c.cp_price, p.p_price"+
-				" FROM shop_cart c, shop_product p,"+
+				",p.p_stock FROM shop_cart c, shop_product p,"+
 				 "shop_member m WHERE p.p_id=c.p_id and"+
 				 " m.m_id=c.m_id and"+
 				 " c.cart_num=-1 and c.m_id=?";
@@ -161,6 +161,7 @@ public ArrayList<Bean> buyList(String m_id) {
 			bean.setCp_count(rs.getInt(4));
 			bean.setCp_price(rs.getInt(5));
 			bean.setP_price(rs.getInt(6));
+			bean.setP_stock(rs.getInt(7));
 			list.add(bean);
 		}	con.close();
 	} catch (Exception e) {
@@ -299,4 +300,45 @@ public ArrayList<Bean> order(String m_id) {
 	}
 	return list;
 }
+
+//Awaiting Payment눌렀을때 >> 배송지,정보뜨게하기
+public Bean deliveryStatus(String m_id) {
+	getCon();
+	Bean bean = new Bean();
+	try {
+		String sql = "SELECT m_id, m_name, m_post, m_jibunaddress, m_address, m_tel"
+				+ " FROM shop_member where m_id=?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, m_id);
+		rs = pstmt.executeQuery();
+		while(rs.next()) {
+			bean.setM_id(rs.getString(1));
+			bean.setM_name(rs.getString(2));
+			bean.setM_post(rs.getString(3));
+			bean.setM_jibunAddress(rs.getString(4));
+			bean.setM_address(rs.getString(5));
+			bean.setM_tel(rs.getString(6));
+		}	con.close();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return bean;
+}
+
+//stockUpdate(주문완료시 stock(재고)-주문갯수)
+public void updateStock(int p_stock,int p_id) {
+	getCon();
+	try {
+		String sql = "UPDATE shop_product SET p_stock=? WHERE p_id=?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, p_stock);
+		pstmt.setInt(2, p_id);
+		pstmt.executeUpdate();
+		con.close();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+}
+
+
 }
