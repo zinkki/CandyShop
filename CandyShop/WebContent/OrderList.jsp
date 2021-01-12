@@ -14,6 +14,11 @@ width: 100px;
 height: 100px;
 }
 </style>
+<script>
+function openWin(f,s) {
+	adWindow = window.open(f,s,'width=600,height=500,status=no,scropllbars=auto');
+}
+</script>
 </head>
 <body>
 
@@ -39,11 +44,13 @@ for(int i=0;i<list.size();i++){
 	bean = list.get(i);
 %>
 <td align="center"><%=bean.getO_date() %></td>
-<td width="200" align="center"><img align="left" class="product" src="img/<%=bean.getP_img() %>">
+<td width="200" align="center">
+<img align="left" class="product" src="img/<%=bean.getP_img() %>">
 <br><%=bean.getP_name() %>(*<%=bean.getO_cp_count() %>)
 <h3 align="right">\<%=bean.getO_cp_price() %></h3>
 </td>
-<td width="200" align="center">Preparing for Delivery.</td>
+<td width="200" align="center">
+<a href="javascript:openWin('Delivery.jsp?m_id=<%=bean.getM_id()%>','0')">Awaiting Payment</a></td>
 <td width="100" align="center"><input type="button" value="CANCEL" onclick=""></td>
 </tr>
 <%
