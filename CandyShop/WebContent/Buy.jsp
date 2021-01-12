@@ -87,6 +87,7 @@ for(int i=0;i<list.size();i++) {
 <td width="100" align="center"><%=bean.getCp_count() %>
 <input type="hidden" name="cp_count" value="<%=bean.getCp_count() %>"></td>
 <td width="100" align="center">\<%=bean.getCp_price() %>
+<input type="hidden" name="p_stock" value="<%=bean.getP_stock() %>">
 <input type="hidden" name="cp_price" value="<%=bean.getCp_price() %>"></td>
 </tr>
 <%
