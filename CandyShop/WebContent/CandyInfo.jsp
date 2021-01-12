@@ -80,5 +80,6 @@ alert('Ok'); }else {alert('Cancele');}"> &nbsp;
 <br><br>
 <!-- Bottom -->
 <jsp:include page="Bottom.jsp"/>
+<br><br><br><br>
 </body>
 </html>
