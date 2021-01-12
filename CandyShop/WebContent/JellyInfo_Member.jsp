@@ -82,6 +82,7 @@ String m_id = (String)session.getAttribute("m_id");
 </tr>
 </table>
 </form>
+<br><br><br><br>
 <!-- Bottom -->
 <jsp:include page="Bottom.jsp"/>
 </body>

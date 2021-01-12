@@ -77,7 +77,7 @@ location.href='ProductDeleteAction.jsp?p_id=<%=bean.getP_id() %>&p_category=<%=b
 alert('Ok'); }else {alert('Cancele');}"> &nbsp;
 <input type="button" value="LIST" onclick="location.href='GumList.jsp'">
 </table>
-<br><br>
+<br><br><br><br>
 <!-- Bottom -->
 <jsp:include page="Bottom.jsp"/>
 </body>
