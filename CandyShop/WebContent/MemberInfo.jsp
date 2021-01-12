@@ -62,8 +62,9 @@ alert('Ok'); }else {alert('Cancele');}">
 <input type="button" value="MemberLIST" onclick="location.href='MemberList.jsp'">
 </td>
 </tr>
+</table>
+<br><br>
 <!-- Bottom -->
 <jsp:include page="Bottom.jsp"/>
-</table>
 </body>
 </html>
