@@ -11,13 +11,13 @@
 <body>
 
 <jsp:useBean id="bean" class="shop.Bean">
-	<jsp:setProperty name="bean" property="m_id"/>
-	<jsp:setProperty name="bean" property="m_pass"/>
+	<jsp:setProperty name="bean" property="*"/>
 </jsp:useBean>
 
 <%
 MemberDAO mdao = new MemberDAO();
 int result = mdao.login(bean.getM_id(), bean.getM_pass());
+
 if(result==1) {
 	//로그인성공
 	PrintWriter p = response.getWriter();

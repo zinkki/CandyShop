@@ -51,7 +51,7 @@ public int m_join(Bean bean) {
 public int login(String m_id, String m_pass) {
 	try {
 		getCon();
-		String sql = "SELECT m_pass FROM shop_member WHERE m_id=?";
+		String sql = "SELECT m_pass FROM shop_member WHERE m_id=? and m_drop=1";
 		pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, m_id);
 		rs = pstmt.executeQuery();

@@ -1,3 +1,4 @@
+<%@ page import="java.io.PrintWriter" %>
 <%@ page import="shop.Bean" %>
 <%@ page import="shop.AdminDAO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
