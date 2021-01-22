@@ -8,10 +8,10 @@ import java.util.ArrayList;
 
 public class AdminDAO {
 	
-String driver="oracle.jdbc.driver.OracleDriver";
-String url = "jdbc:oracle:thin:@localhost:1521:XE";
-String user = "system";
-String pw = "1234";
+	String driver = "oracle.jdbc.driver.OracleDriver";
+	String url = "jdbc:oracle:thin:@zinkki.ctdiplvlu9sn.ap-northeast-2.rds.amazonaws.com:1521:zinkki";
+	String user = "zinkki";
+	String pw = "12341234";
 
 Connection con;
 PreparedStatement pstmt;

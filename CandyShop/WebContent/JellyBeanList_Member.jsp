@@ -50,7 +50,7 @@ for(int i=0;i<list.size();i++) {
 </a>
 </div>
 <div align="center"><%=bean.getP_name() %></div>
-<div align="center"><%=bean.getP_price() %>&nbsp;\</div>
+<div align="center">\<%=bean.getP_price() %></div>
 </div>
 <%
 }
